@@ -1,0 +1,19 @@
+@import com.andrew_ya.soc_net.domain.User
+
+
+@(user: User)
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>@{user.firstName + " " + user.lastName}</title>
+    </head>
+    <body>
+    <h2>@{user.firstName + " " + user.lastName}</h2>
+    <table>
+        <tr><td>Sex</td><td>@{user.sex}</td></tr>
+        <tr><td>Age</td><td>@{user.age}</td></tr>
+        <tr><td>City</td><td>@{user.city}</td></tr>
+        <tr><td>Interests</td><td>@{user.interests.mkString(", ")}</td></tr>
+    </table>
+    </body>
+</html>
