@@ -26,7 +26,7 @@ object HttpServer {
   private def create(resources: Resources)(implicit concurrentEffect: ConcurrentEffect[IO], timer: Timer[IO], cs: ContextShift[IO]): IO[ExitCode] = {
     val repository = new UserRepo(resources.transactor)
     for {
-//      _ <- Database.initialize(resources.transactor)
+      _ <- Database.initialize(resources.transactor)
 
       exitCode <- BlazeServerBuilder[IO]
         .bindHttp(resources.config.server.port, resources.config.server.host)

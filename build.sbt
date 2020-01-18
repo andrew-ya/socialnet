@@ -12,6 +12,8 @@ val circeV = "0.11.2"
 val tsecV = "0.0.1-M11"
 val pureConfigVersion = "0.12.2"
 val logbackVersion = "1.2.3"
+val flywayVersion = "6.1.3"
+val gatlingVersion = "3.3.1"
 
 libraryDependencies ++= Seq(
   "eu.timepit" %% "refined" % "0.9.10",
@@ -29,7 +31,12 @@ libraryDependencies ++= Seq(
   "com.github.pureconfig" %% "pureconfig" % pureConfigVersion,
   "com.github.pureconfig" %% "pureconfig-cats-effect" % pureConfigVersion,
   "mysql"  % "mysql-connector-java"    % "5.1.34",
+  "org.flywaydb" %  "flyway-core" % flywayVersion,
   "ch.qos.logback" % "logback-classic" % logbackVersion,
+
+  "io.gatling.highcharts" % "gatling-charts-highcharts" % gatlingVersion % "test",
+  "io.gatling" % "gatling-test-framework" % gatlingVersion % "test",
+  "org.scalacheck" %% "scalacheck" % "1.14.1" % "test",
 
   "io.github.jmcardon" %% "tsec-http4s" % tsecV,
   "io.github.jmcardon" %% "tsec-common" % tsecV,
@@ -45,6 +52,8 @@ addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.fu
 enablePlugins(JavaAppPackaging)
 
 enablePlugins(SbtTwirl)
+
+enablePlugins(GatlingPlugin)
 
 mainClass in assembly := Some("com.andrew_ya.soc_net.ServerApp")
 
